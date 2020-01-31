@@ -8,7 +8,7 @@ $.ajax({
   method: "GET",
   success: function (data, stato) {
 
-    const arrayResponse = data.response;
+    var arrayResponse = data.response;
     processData(arrayResponse);
 
   },
