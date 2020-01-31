@@ -8,26 +8,8 @@ $.ajax({
   method: "GET",
   success: function (data, stato) {
 
-    var arrayResponse = data.response;
-
-    i=0;
-    arrayResponse.forEach(function(item) {
-      // console.log(item);
-      var source = $("#entry-template").html();
-      var template = Handlebars.compile(source);
-
-      var context = arrayResponse[i];
-      var html = template(context);
-
-      $('.cds-container').append(html);
-
-console.log(context);
-      i++;
-
-    });
-
-
-    // processData(data.response);
+    const arrayResponse = data.response;
+    processData(arrayResponse);
 
   },
   error: function (richiesta, stato, errore) {
@@ -40,12 +22,24 @@ console.log(context);
 //
 
 
-  //
-  // function processData() {
-  //   arrayResponse.forEach(function(item) {
-  //     console.log(item);
-  //   });
-  // }
+
+  function processData() {
+    i=0;
+    arrayResponse.forEach(function(item) {
+      // console.log(item);
+      var source = $("#entry-template").html();
+      var template = Handlebars.compile(source);
+
+      var context = arrayResponse[i];
+      var html = template(context);
+
+      $('.cds-container').append(html);
+      i++;
+
+    });
+  }
+
+
 
 
 
