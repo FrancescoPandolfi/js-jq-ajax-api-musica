@@ -1,3 +1,55 @@
 $(document).ready(function() {
-	//Code
+
+
+
+
+$.ajax({
+  url: "https://flynn.boolean.careers/exercises/api/array/music",
+  method: "GET",
+  success: function (data, stato) {
+
+    var arrayResponse = data.response;
+
+    i=0;
+    arrayResponse.forEach(function(item) {
+      // console.log(item);
+      var source = $("#entry-template").html();
+      var template = Handlebars.compile(source);
+
+      var context = arrayResponse[i];
+      var html = template(context);
+
+      $('.cds-container').append(html);
+
+console.log(context);
+      i++;
+
+    });
+
+
+    // processData(data.response);
+
+  },
+  error: function (richiesta, stato, errore) {
+    alert("E' avvenuto un errore. " + errore);
+  }
 });
+
+
+
+//
+
+
+  //
+  // function processData() {
+  //   arrayResponse.forEach(function(item) {
+  //     console.log(item);
+  //   });
+  // }
+
+
+
+
+
+
+}); // end ready
